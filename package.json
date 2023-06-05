@@ -1,0 +1,16 @@
+{
+    "name": "query-autoresponder",
+    "version": "1.0.0",
+    "author": {
+        "name": "Emanuele Aliberti",
+        "email": "dev@mtka.eu"
+    },
+    "license": "MIT",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "node-mdaemon-api": "^23.0.0-alpha.21"
+    }
+}
