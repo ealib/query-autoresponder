@@ -37,7 +37,7 @@ function spoolMessage(mailFrom, mailTo, mailSubject, mailBody) {
 
     const success = 0 === spoolingResult; 
     if (!success) {
-        console.error(`spooling returned ${spoolingResult}`);
+        printError(`spooling returned ${spoolingResult}`);
     }
     return success;
 }
@@ -56,6 +56,6 @@ domainNames.forEach(domainName => {
     if (spoolMessage(mailFrom, mailTo, mailSubject, mailBody)) {
         console.log('Test message sent to', mailTo, 'for domain', domainName, 'from', mailFrom);
     } else {
-        console.error(`Could NOT send a test message to`, mailTo, 'for domain', domainName, 'from', mailFrom);
+        printError(`Could NOT send a test message to`, mailTo, 'for domain', domainName, 'from', mailFrom);
     }
 });
