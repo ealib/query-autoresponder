@@ -56,6 +56,6 @@ domainNames.forEach(domainName => {
     if (spoolMessage(mailFrom, mailTo, mailSubject, mailBody)) {
         console.log('Test message sent to', mailTo, 'for domain', domainName, 'from', mailFrom);
     } else {
-        printError(`Could NOT send a test message to`, mailTo, 'for domain', domainName, 'from', mailFrom);
+        printError(`Could NOT send a test message to ${mailTo} for domain ${domainName} from ${mailFrom}`);
     }
 });
