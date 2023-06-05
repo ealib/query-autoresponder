@@ -24,7 +24,6 @@ function spoolMessage(mailFrom, mailTo, mailSubject, mailBody) {
         printError(`could NOT create a MD_MessageInfo object`);
         return false;
     }
-    messageInfo.ContentType = 'text/plain';
     messageInfo.From = mailFrom;
     messageInfo.To = mailTo;
     messageInfo.Subject = mailSubject;
@@ -44,8 +43,8 @@ domainNames.forEach(domainName => {
     const mailSubject = `TEST from ${domainName}`;
     const mailBody = `This is just a test message from ${domainName}. Please ignore it.`;
     if (spoolMessage(mailFrom, mailTo, mailSubject, mailBody)) {
-        console.log('Test message sent to', mailTo, 'for domain', domainName);
+        console.log('Test message sent to', mailTo, 'for domain', domainName, 'from', mailFrom);
     } else {
-        console.error(`Could NOT send a test message to`, mailTo, 'for domain', domainName);
+        console.error(`Could NOT send a test message to`, mailTo, 'for domain', domainName, 'from', mailFrom);
     }
 });
