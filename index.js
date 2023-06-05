@@ -18,6 +18,10 @@
 
 const md = require('node-mdaemon-api');
 
+function printError(errorMessage) {
+    console.error('ERROR:', errorMessage);
+}
+
 function spoolMessage(mailFrom, mailTo, mailSubject, mailBody) {
     const messageInfo = md.MD_InitMessageInfo();
     if (!messageInfo) {
@@ -28,7 +32,14 @@ function spoolMessage(mailFrom, mailTo, mailSubject, mailBody) {
     messageInfo.To = mailTo;
     messageInfo.Subject = mailSubject;
     messageInfo.MessageBody = mailBody;
-    return md.MD_SpoolMessage(messageInfo);
+
+    const spoolingResult = md.MD_SpoolMessage(messageInfo);
+
+    const success = 0 === spoolingResult; 
+    if (!success) {
+        console.error(`spooling returned ${spoolingResult}`);
+    }
+    return success;
 }
 
 const fromLocalPart = 'postmaster';
